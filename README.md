@@ -112,15 +112,15 @@ something like this:
 Then the *balance* command would then e.g. print out lines like that:
 
     ACCOUNT;TOTAL OUT;TOTAL IN;BALANCE
-    expenses;0.00;920.00;-920.00
-    expenses/car;0.00;130.00;-130.00
-    expenses/car/fuel;0.00;50.00;-50.00
-    expenses/car/repairs;0.00;80.00;-80.00
-    expenses/food;0.00;240.00;-240.00
-    expenses/house;0.00;450.00;-450.00
-    expenses/house/mortgage;0.00;150.00;-150.00
-    expenses/house/repairs;0.00;300.00;-300.00
-    expenses/other;0.00;100.00;-100.00
+    expenses;0.00;920.00;920.00
+    expenses/car;0.00;130.00;130.00
+    expenses/car/fuel;0.00;50.00;50.00
+    expenses/car/repairs;0.00;80.00;80.00
+    expenses/food;0.00;240.00;240.00
+    expenses/house;0.00;450.00;450.00
+    expenses/house/mortgage;0.00;150.00;150.00
+    expenses/house/repairs;0.00;300.00;300.00
+    expenses/other;0.00;100.00;100.00
 
 
 ## A primer on double account book keeping
