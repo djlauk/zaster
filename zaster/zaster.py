@@ -106,6 +106,21 @@ class Account(object):
     def __sub__(self, other):
         return self.__add__(-other)
 
+    def __getitem__(self, key):
+        if key == 'balance':
+            return self.balance
+        if key == 'name':
+            return self.name
+        if key == 'parent':
+            return self.parent
+        if key == 'total_in':
+            return self.total_in
+        if key == 'total_out':
+            return self.total_out
+        if key == 'transactions':
+            return self.transactions
+        raise KeyError("No such field: %s" % key)
+
     def __str__(self):
         return "%s (%.2f)" % (self.name, self.balance)
 
