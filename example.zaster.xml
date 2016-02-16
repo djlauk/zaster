@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<zaster>
+  <accounts>
+    <account name="Carry" description="Used in the beginning of an accounting journal" />
+	<account name="Income" description="We get paid for our work. Yeay!" />
+	<account name="Credit card" />
+	<account name="Cash" />
+	<account name="Bank account" />
+	<account name="Expenses" description="Bye bye, money! Hello, stuff!" />
+  </accounts>
+  <transactions>
+    <transaction id="2015.0.1" date="2015-03-01" amount="500.00" from="Carry" to="Bank account" comment="Initial value at the beginning of accounting period" />
+	<transaction id="2015.0.2" date="2015-03-01" amount="500.00" from="Carry" to="Cash" comment="Initial value at the beginning of accounting period" />
+	<!-- Let's assume the Credit card was balanced. So there is no carry transaction for it. -->
+	<transaction id="2015.1" date="2015-03-05" amount="10.00" from="Credit card" to="Cash" comment="Withdraw money at ATM" />
+	<transaction id="2015.2" date="2015-03-05 12:30" amount="5.00" from="Credit card" to="Expenses" comment="Sandwich for lunch" />
+	<transaction id="2015.3" date="2015-03-05T13:00" amount="3.50" from="Cash" to="Expenses" comment="Coffee to go after lunch" />
+	<transaction id="2015.4" date="2015-03-30" amount="800.00" from="Income" to="Bank account" comment="Paycheck" />
+	<transaction id="2015.5" date="2015-04-06" amount="15.00" from="Bank account" to="Credit card" comment="Pay bill for March" />
+  </transactions>
+</zaster>
