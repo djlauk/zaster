@@ -28,7 +28,7 @@ Create an XML file from the following template:
 
 Each ``account`` element has the following attributes:
 
-- **name**: ID of the account. Must be unique. Required.
+- **id**: ID of the account. Must be unique. Required.
 - parent: ID of the parent account (if any). The definition of the parent
   must precede the definition of the child. Optional.
 - description: Any description you'd like. Optional.
@@ -61,13 +61,13 @@ the following XML structure:
     <?xml version="1.0" encoding="utf-8"?>
     <zaster>
       <accounts>
-        <account name="expenses" />
-        <account name="food" parent="expenses" />
-        <account name="house" parent="expenses" />
-        <account name="car" parent="expenses" />
-        <account name="fuel" parent="car" />
-        <account name="repairs" parent="car" />
-        <account name="other" parent="expenses" />
+        <account id="expenses" />
+        <account id="food" parent="expenses" />
+        <account id="house" parent="expenses" />
+        <account id="car" parent="expenses" />
+        <account id="fuel" parent="car" />
+        <account id="repairs" parent="car" />
+        <account id="other" parent="expenses" />
       </accounts>
     <!-- ... -->
     </zaster>
@@ -96,15 +96,15 @@ something like this:
     <?xml version="1.0" encoding="utf-8"?>
     <zaster>
       <accounts>
-        <account name="expenses" />
-        <account name="expenses/food" parent="expenses" />
-        <account name="expenses/house" parent="expenses" />
-        <account name="expenses/house/repairs" parent="expenses/house" />
-        <account name="expenses/house/mortgage" parent="expenses/house" />
-        <account name="expenses/car" parent="expenses" />
-        <account name="expenses/car/fuel" parent="expenses/car" />
-        <account name="expenses/car/repairs" parent="expenses/car" />
-        <account name="expenses/other" parent="expenses" />
+        <account id="expenses" />
+        <account id="expenses/food" parent="expenses" />
+        <account id="expenses/house" parent="expenses" />
+        <account id="expenses/house/repairs" parent="expenses/house" />
+        <account id="expenses/house/mortgage" parent="expenses/house" />
+        <account id="expenses/car" parent="expenses" />
+        <account id="expenses/car/fuel" parent="expenses/car" />
+        <account id="expenses/car/repairs" parent="expenses/car" />
+        <account id="expenses/other" parent="expenses" />
       </accounts>
     <!-- ... -->
     </zaster>

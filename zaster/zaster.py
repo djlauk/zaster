@@ -32,17 +32,17 @@ class ZasterHandler(xml.sax.ContentHandler):
         self.transactions = {}
 
     def _addAccount(self, attrs):
-        if 'name' not in attrs:
-            raise MissingRequiredAttributeError('account', 'name')
-        name = attrs.get('name', None)
-        if name in self.accounts:
-            raise DuplicateError("Account '%(name)s' is defined multiple times" % attrs)
+        if 'id' not in attrs:
+            raise MissingRequiredAttributeError('account', 'id')
+        id_ = attrs.get('id', None)
+        if id_ in self.accounts:
+            raise DuplicateError("Account '%(id)s' is defined multiple times" % attrs)
         parent = attrs.get('parent', None)
         if parent:
             if parent not in self.accounts:
-                raise KeyError("Account '%(name)s' references unknown parent '%(parent)s'" % attrs)
+                raise KeyError("Account '%(id)s' references unknown parent '%(parent)s'" % attrs)
             parent = self.accounts[parent]
-        self.accounts[name] = Account(name, parent)
+        self.accounts[id_] = Account(id_, parent)
 
     def _addTransaction(self, attrs):
         for a in ('id', 'date', 'from', 'to', 'amount'):
@@ -83,8 +83,8 @@ class Account(object):
     An account
     """
 
-    def __init__(self, name, parent=None, transactions=None):
-        self.name = name
+    def __init__(self, id_, parent=None, transactions=None):
+        self.id = id_
         self.parent = parent
         self.balance = 0.0
         self.total_in = 0.0
@@ -109,8 +109,8 @@ class Account(object):
     def __getitem__(self, key):
         if key == 'balance':
             return self.balance
-        if key == 'name':
-            return self.name
+        if key == 'id':
+            return self.id
         if key == 'parent':
             return self.parent
         if key == 'total_in':
@@ -147,11 +147,11 @@ def parse_xml_file(file_name):
 
 def command_balance(file_name):
     accounts, _ = parse_xml_file(file_name)
-    names = list(accounts.keys())
-    names.sort()
+    ids = list(accounts.keys())
+    ids.sort()
     sys.stdout.write("ACCOUNT;TOTAL OUT;TOTAL IN;BALANCE\n")
-    for n in names:
-        sys.stdout.write("%(name)s;%(total_out).2f;%(total_in).2f;%(balance).2f\n" % accounts[n])
+    for id_ in ids:
+        sys.stdout.write("%(id)s;%(total_out).2f;%(total_in).2f;%(balance).2f\n" % accounts[id_])
     return 0
 
 
@@ -160,7 +160,7 @@ def command_statement(file_name, account):
     if account not in accounts:
         raise KeyError('Account unknown: %s' % account)
     sys.stdout.write("Statement for account: %s\n" % account)
-    sys.stdout.write("ID;DATE;OUT;IN;BALANCE;COMMENT\n")
+    sys.stdout.write("TRANSACTION;DATE;OUT;IN;BALANCE;COMMENT\n")
     balance = 0.0
     for t in accounts[account].transactions:
         amount_in = 0.0
